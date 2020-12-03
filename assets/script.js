@@ -98,10 +98,6 @@ function stopTime() {
 
 // sets first questios
 function showQuestion(questionIndex) {
-  //reagan code
-
-  //reagan code end
-
   console.log("What you want");
   document.querySelector(".card-header").innerHTML = `<h2> ${questions[questionIndex][0]}</h2>`;
   document.querySelector(".card-footer").innerHTML = `
@@ -122,92 +118,22 @@ function showQuestion(questionIndex) {
       } else if (this.textContent !== questions[questionIndex][5]) {
         secondsLeft = secondsLeft - 10;
         console.log("uh oh");
-        //stopTime();
       }
-      // changes to submit page
+      // changes to submit page/stops time
     } else {
-      // secondsLeft = 0;
-      // if ((secondsLeft = 0)) {
-      //   clearInterval(timerInterval);
-      // }
-
-      //reagan code
       stopTime();
-      //reagan code end
-
-      //submits username and score
-
-      // var signUpButton = document.querySelector("#submit");
-      // signUpButton.addEventListener("click", function (event) {
-      //   event.preventDefault();
-
-      //   var username = document.querySelector("#username").value;
-
-      //   if (username === "") {
-      //     displayMessage("error", "username cannot be blank");
-      //   } else {
-      //     // Save email and password to localStorage and render the last registered.
-      //     localStorage.setItem("username", username);
-
-      //     localStorage.setItem("score", score);
-      //     // renderLastRegistered();
-      //     renderLastScore();
-      //   }
-      // });
-      // var displayName = localStorage.getItem("username");
-      // var displayScore = localStorage.getItem("score");
-      // function renderLastScore() {
-      //   displayName.textContent = localStorage.getItem("username");
-      //   displayScore.textContent = localStorage.getItem("score");
-      // }
-      // signUpButton.addEventListener("click", function (event) {
-      //   event.preventDefault();
-
-      //   document.querySelector(".card-header").innerHTML = `
-      //   <h1>Score</h1>
-      //   <h2 id= "test">${localStorage.getItem("username")}: ${localStorage.getItem("score")}</h2>
-
-      //   `;
-      //   document.querySelector(".card-footer").innerHTML = "";
-      //   renderLastScore();
-      // });
     }
 
     console.log(score);
   }
+  // eventlistenrs for each button for a question
   document.querySelector("#answer1").addEventListener("click", answerClickHandler);
   document.querySelector("#answer2").addEventListener("click", answerClickHandler);
   document.querySelector("#answer3").addEventListener("click", answerClickHandler);
   document.querySelector("#answer4").addEventListener("click", answerClickHandler);
-
-  // if (timerStop > 4) {
-  //   timeEl.textContent = "";
-  // }
 }
 
 var timeEl = document.querySelector("#timer");
-
-// document.querySelector("#start-quiz").addEventListener("click", function () {
-//   showQuestion(questionCount);
-//   timeEl.textContent = secondsLeft;
-//   var timerInterval = setInterval(function () {
-//     secondsLeft--;
-//     timeEl.textContent = secondsLeft;
-//     if (secondsLeft <= 0) {
-//       clearInterval(timerInterval);
-//       document.querySelector(".card-header").innerHTML = `
-//       <h1>Game Over</h1>
-//       <h1>Score: ${score} </h1>
-//       <input type="text" name="username" id="username" placeholder="Enter Name" />
-//       <br>
-//       <button id="submit" class = "btn">Submit</button>
-//       `;
-
-//       document.querySelector(".card-footer").innerHTML = "";
-//       timeEl.textContent = "";
-//     }
-//   }, 1000);
-// }
 
 document.querySelector("#start-quiz").addEventListener("click", function () {
   showQuestion(questionCount);
