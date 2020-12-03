@@ -1,44 +1,30 @@
 var questions = [
   [
-    "this is a question",
-    "this is an answer 1",
-    "this is an answer 2",
-    "this is an answer 3",
-    "this is an answer 4",
-    "this is an answer 1",
+    "How do you define a varaibale in javascript?",
+    "var",
+    "function()",
+    ".appendChild",
+    ".getElementByID",
+    "var",
   ],
   [
-    "this is a question 2",
-    "this is an answer 1",
-    "this is an answer 2",
-    "this is an answer 3",
-    "this is an answer 4",
-    "this is an answer 2",
+    "How do you select a specific html element in javascript?",
+    ".appendChild",
+    ".getElementByID",
+    ".textContent",
+    ".addEventListener",
+    ".getElementByID",
   ],
   [
-    "this is a question 3",
-    "this is an answer 1",
-    "this is an answer 2",
-    "this is an answer 3",
-    "this is an answer 4",
-    "this is an answer 3",
+    "How do you get the text of an element?",
+    ".querySelector",
+    "displayMessage",
+    ".textContent",
+    "console.log",
+    ".textContent",
   ],
-  [
-    "this is a question 4",
-    "this is an answer 1",
-    "this is an answer 2",
-    "this is an answer 3",
-    "this is an answer 4",
-    "this is an answer 4",
-  ],
-  [
-    "this is a question 5",
-    "this is an answer 1",
-    "this is an answer 2",
-    "this is an answer 3",
-    "this is an answer 4",
-    "this is an answer 1",
-  ],
+  ["how do you alert a message?", "confirm()", "const", "return", "alert()", "alert()"],
+  ["How do you get a random number?", "Math.random()", "while", "if", "Math.random()"],
 ];
 
 var score = 0;
@@ -65,7 +51,12 @@ function stopTime() {
           <br>
           <button id="submit" class = "btn">Submit</button>
           `;
-  document.querySelector(".card-footer").innerHTML = "";
+  var displayName = localStorage.getItem("username");
+  var displayScore = localStorage.getItem("score");
+  function renderLastScore() {
+    displayName.textContent = localStorage.getItem("username");
+    displayScore.textContent = localStorage.getItem("score");
+  }
   var signUpButton = document.querySelector("#submit");
   signUpButton.addEventListener("click", function (event) {
     event.preventDefault();
@@ -80,8 +71,29 @@ function stopTime() {
 
       localStorage.setItem("score", score);
       // renderLastRegistered();
+      renderLastScore();
     }
   });
+  var displayName = localStorage.getItem("username");
+  var displayScore = localStorage.getItem("score");
+  function renderLastScore() {
+    displayName.textContent = localStorage.getItem("username");
+    displayScore.textContent = localStorage.getItem("score");
+  }
+  signUpButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    document.querySelector(".card-header").innerHTML = `
+        <h1>Score</h1>
+        <h2 id= "test">${localStorage.getItem("username")}: ${localStorage.getItem("score")}</h2>
+        
+        
+        `;
+    document.querySelector(".card-footer").innerHTML = "";
+    renderLastScore();
+  });
+
+  document.querySelector(".card-footer").innerHTML = "";
 }
 
 // sets first questios
@@ -125,41 +137,40 @@ function showQuestion(questionIndex) {
 
       //submits username and score
 
-      var signUpButton = document.querySelector("#submit");
-      signUpButton.addEventListener("click", function (event) {
-        event.preventDefault();
+      // var signUpButton = document.querySelector("#submit");
+      // signUpButton.addEventListener("click", function (event) {
+      //   event.preventDefault();
 
-        var username = document.querySelector("#username").value;
+      //   var username = document.querySelector("#username").value;
 
-        if (username === "") {
-          displayMessage("error", "username cannot be blank");
-        } else {
-          // Save email and password to localStorage and render the last registered.
-          localStorage.setItem("username", username);
+      //   if (username === "") {
+      //     displayMessage("error", "username cannot be blank");
+      //   } else {
+      //     // Save email and password to localStorage and render the last registered.
+      //     localStorage.setItem("username", username);
 
-          localStorage.setItem("score", score);
-          // renderLastRegistered();
-          renderLastScore();
-        }
-      });
-      var displayName = localStorage.getItem("username");
-      var displayScore = localStorage.getItem("score");
-      function renderLastScore() {
-        displayName.textContent = localStorage.getItem("username");
-        displayScore.textContent = localStorage.getItem("score");
-      }
-      signUpButton.addEventListener("click", function (event) {
-        event.preventDefault();
+      //     localStorage.setItem("score", score);
+      //     // renderLastRegistered();
+      //     renderLastScore();
+      //   }
+      // });
+      // var displayName = localStorage.getItem("username");
+      // var displayScore = localStorage.getItem("score");
+      // function renderLastScore() {
+      //   displayName.textContent = localStorage.getItem("username");
+      //   displayScore.textContent = localStorage.getItem("score");
+      // }
+      // signUpButton.addEventListener("click", function (event) {
+      //   event.preventDefault();
 
-        document.querySelector(".card-header").innerHTML = `
-        <h1>high scores</h1>
-        <h2 id= "test">${localStorage.getItem("username")}: ${localStorage.getItem("score")}</h2>
-        
-        <button id="submit" class = "btn">Submit</button>
-        `;
-        document.querySelector(".card-footer").innerHTML = "";
-        renderLastScore();
-      });
+      //   document.querySelector(".card-header").innerHTML = `
+      //   <h1>Score</h1>
+      //   <h2 id= "test">${localStorage.getItem("username")}: ${localStorage.getItem("score")}</h2>
+
+      //   `;
+      //   document.querySelector(".card-footer").innerHTML = "";
+      //   renderLastScore();
+      // });
     }
 
     console.log(score);
